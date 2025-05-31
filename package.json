@@ -1,0 +1,71 @@
+{
+  "name": "study-planner",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
+  },
+  "lint-staged": {
+    "./src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "**/*.{html,json,css,scss,md,mdx}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@mantine/carousel": "^8.0.1",
+    "@mantine/charts": "^8.0.1",
+    "@mantine/core": "^8.0.1",
+    "@mantine/dates": "^8.0.1",
+    "@mantine/form": "^8.0.2",
+    "@mantine/hooks": "^8.0.1",
+    "@mantine/modals": "^8.0.1",
+    "@mantine/notifications": "^8.0.2",
+    "@mantine/nprogress": "^8.0.1",
+    "@tabler/icons-react": "^3.33.0",
+    "@tanstack/react-query": "^5.79.0",
+    "axios": "^1.9.0",
+    "dayjs": "^1.11.13",
+    "embla-carousel": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
+    "next": "15.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "2",
+    "tabler-icons-react": "^1.56.0",
+    "zod": "^3.25.42"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.27.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
+    "eslint": "^9.27.0",
+    "eslint-config-next": "^15.4.0-canary.51",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-next": "^0.0.0",
+    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "postcss": "^8.5.3",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^4",
+    "typescript": "^5.8.3"
+  }
+}

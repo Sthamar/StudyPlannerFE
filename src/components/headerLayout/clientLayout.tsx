@@ -7,13 +7,15 @@ import LayoutHeaderWrapper from "./layoutHeaderWrapper";
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const hideHeader = ["/login", "/signup"].includes(pathname);
+  const hideHeader = ["/login", "/signup", "/login/forgot-page", "/verify-email"].includes(
+    pathname,
+  );
   const theme = useMantineTheme();
 
   return (
     <>
       {!hideHeader && <LayoutHeaderWrapper />}
-      <Container size="xl" py={rem(80)} bg={theme.other.background}>
+      <Container size="xxl" py={rem(80)} bg={theme.other.background}>
         {children}
       </Container>
     </>

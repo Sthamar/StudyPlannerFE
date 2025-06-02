@@ -38,6 +38,7 @@ export function useSmartForm<T extends Record<string, any>>({
   const fullUrl = `${url}${isEdit ? `/${id}` : ""}`;
 
   const [submitter, setSubmitter] = useState<HTMLElement | null>(null);
+  const [isPending, setIsPending] = useState(false);
 
   const form = useForm<T>({
     initialValues: initialValues as T,
@@ -67,17 +68,25 @@ export function useSmartForm<T extends Record<string, any>>({
     }
   }, [editData.data?.data, isEdit]);
 
-  const handleSubmit = (values: typeof form.values) => {
-    const finalData = transformSubmitData ? transformSubmitData(values) : values;
-    if (typeof (formMutate as any).mutate === "function") {
+  const handleSubmit = async(values: typeof form.values) => {
+     const finalData = transformSubmitData ? transformSubmitData(values) : values;
+  try {
+    setIsPending(true);
+    if (typeof (formMutate as any).mutateAsync === "function") {
+      await (formMutate as any).mutateAsync(finalData);
+    } else if (typeof (formMutate as any).mutate === "function") {
       (formMutate as any).mutate(finalData);
     }
+  } finally {
+    setIsPending(false);
+  }
   };
 
   return {
     form,
     handleSubmit: form.onSubmit(handleSubmit),
     isLoading: (editData as any)?.isFetching ?? false,
+    isPending,
     setSubmitter,
   };
 }

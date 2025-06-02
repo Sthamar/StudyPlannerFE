@@ -1,4 +1,4 @@
-// hooks/useFetch.ts
+"use client";
 import cax from "@/libs/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";

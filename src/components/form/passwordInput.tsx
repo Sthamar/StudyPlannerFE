@@ -1,7 +1,53 @@
 import { PasswordInput } from "@mantine/core";
 import { FormInputProps } from "./type";
-export function InputPassword<T>({ id, label, placeholder, form }: FormInputProps<T>) {
+export function InputPassword<T>({ id, label, placeholder, form, w, h }: FormInputProps<T>) {
   return (
-    <PasswordInput label={label} placeholder={placeholder} {...form.getInputProps(id as string)} />
+    <PasswordInput
+      w={w}
+      h={h}
+      label={label}
+      placeholder={placeholder}
+      {...form.getInputProps(id as string)}
+      styles={(theme) => ({
+        root: {
+          marginBottom: theme.spacing.md,
+        },
+        input: {
+          backgroundColor: theme.other.background, // brand[0]
+          borderColor: theme.other.border.default, // brand[3]
+          color: theme.other.text.primary, // brand[9]
+          fontFamily: theme.fontFamily,
+          fontSize: theme.fontSizes.md,
+          padding: "10px 14px",
+
+          "&::placeholder": {
+            color: theme.other.text.muted, // brand[7]
+          },
+
+          "&:focus": {
+            borderColor: theme.other.border.strong, // brand[6]
+            boxShadow: `0 0 0 2px ${theme.colors.brand[2]}`, // brand[2]
+          },
+        },
+        label: {
+          color: theme.other.text.secondary, // brand[8]
+          fontFamily: theme.headings.fontFamily,
+          fontSize: theme.fontSizes.sm,
+          fontWeight: 500,
+          marginBottom: 4,
+        },
+        visibilityToggle: {
+          color: theme.other.text.muted, // brand[7]
+          "&:hover": {
+            color: theme.other.text.secondary, // brand[8]
+          },
+        },
+        error: {
+          color: theme.other.error.text, // red-700
+          fontSize: theme.fontSizes.sm,
+          marginTop: 4,
+        },
+      })}
+    />
   );
 }

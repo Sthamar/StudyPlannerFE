@@ -1,3 +1,18 @@
-export const getToken = () => localStorage.getItem("token");
-export const setToken = (token: string) => localStorage.setItem("token", token);
-export const clearToken = () => localStorage.removeItem("token");
+export const getToken = () => {
+  if (typeof localStorage !== "undefined") {
+    return localStorage.getItem("token");
+  }
+  return null;
+};
+
+export const setToken = (token: string) => {
+  if (typeof localStorage !== "undefined") {
+    localStorage.setItem("token", token);
+  }
+};
+
+export const clearToken = () => {
+  if (typeof localStorage !== "undefined") {
+    localStorage.removeItem("token");
+  }
+};

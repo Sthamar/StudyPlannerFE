@@ -1,10 +1,16 @@
-import "@mantine/core/styles.css";
-import "./globals.css";
+// app/layout.tsx
 
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+// import "./globals.css";
+
+// import ReactQueryProvider from "@/providers/ReactQueryProvider"; // ← import here
+// import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import ClientLayout from "@/components/headerLayout/clientLayout";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import { theme } from "@/style/theme";
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import ClientLayout from "./components/headerLayout/clientLayout";
 
 export const metadata = {
   title: "Study Planner",
@@ -20,7 +26,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <MantineProvider theme={theme}>
           <Notifications position="top-center" />
-          <ClientLayout>{children}</ClientLayout>
+
+          <ReactQueryProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </ReactQueryProvider>
         </MantineProvider>
       </body>
     </html>
